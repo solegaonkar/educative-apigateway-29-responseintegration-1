@@ -48,6 +48,10 @@ Resources:
                 responses:
                   default:
                     statusCode: "200"
+                    responseTemplates:
+                      application/json: '{"sourceIp" : "$context.identity.sourceIp", "apiVersion": "1.1", "value": $input.body}'
+                requestTemplates:
+                  application/json: '{"statusCode": 200}'
                 passthroughBehavior: "when_no_match"
                 contentHandling: "CONVERT_TO_TEXT"
                 type: "aws"
